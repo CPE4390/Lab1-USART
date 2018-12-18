@@ -2,7 +2,7 @@
 #include "LCD.h"
 
 
-
+//CONFIG bits for PIC18F87J11
 #pragma config FOSC=HSPLL
 #pragma config WDTEN=OFF
 #pragma config XINST=OFF
