@@ -25,7 +25,7 @@ void main(void) {
     InitPins();
     ConfigPeriph();
     ConfigInterrupts();
-
+    TXSTA1bits.TXEN = 1;  //Turn on TX
     while (1) {
         while (PIR1bits.RC1IF == 0);  //Wait for a byte
         rxBuffer[rxCount] = RCREG1; //Read the byte into the string buffer
@@ -38,9 +38,6 @@ void main(void) {
         } else if (rxCount < 16) {
             ++rxCount;
             LATDbits.LATD0 ^= 1;
-        }
-        if (TXSTA1bits.TXEN == 0) {  //Turn on TX if it's off
-            TXSTA1bits.TXEN = 1;
         }
     }
 }
