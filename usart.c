@@ -41,8 +41,7 @@ void main(void) {
             rxBuffer[rxCount] = rx; //save the byte into the string buffer
             if (rxBuffer[rxCount] == '\r') { //check for CR
                 rxBuffer[rxCount] = '\0'; //Terminate the string
-                LCDClearLine(0);
-                LCDWriteLine(rxBuffer, 0);
+                lprintf(0, rxBuffer);
                 rxCount = 0;
                 LATDbits.LATD1 ^= 1; //Toggle LED D2
             } else if (rxCount < 16) {
